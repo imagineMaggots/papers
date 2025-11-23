@@ -14,6 +14,7 @@
 #include <string>
 #include <regex>
 #include <fstream>
+#include <pdf.h>
 
 // colors and indentation for terminal outputs
 #define terminal_error "\x1b[31m\t" // errors are red with an indentation
@@ -51,12 +52,24 @@ int main(int argc, char* argv[])
     //////
 
     /**
-     * Larger To Do: Process the pap into pdf, while maintaining pap syntax?
+     * Larger To Do: Process the pap into dom
+     * 
+     * Needs: 
+     * - .pap Parsing
+     * - .pap Linting?
+     * - DOM construction       
      */
 
     //////
     // PRODUCE OUTPUT PDF
     //////
+    /**
+     * Larger To Do: Process the dom into pdf
+     * 
+     * Needs: 
+     * - implementation of typical pdf-objects
+     * - further
+     */
 
     // getting the file name right
     std::string fileName = argv[1];
@@ -64,16 +77,26 @@ int main(int argc, char* argv[])
     std::string fileExtension = ".pdf";
     std::string pdfName = fileName + fileExtension;
     
-    // instanciating an output
+    // instantiating an output
     std::ofstream output (pdfName);
     
     // to do: output-ing a pdf
     // /&/ note: this is a minimal pdf-file
-    output << "%PDF-1.0\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj 2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj 3 0 obj<</Type/Page/MediaBox[0 0 3 3]>>endobj\nxref0 4 0000000000 65535 f\n0000000010 00000 n\n0000000053 00000 n\n0000000102 00000 n\ntrailer<</Size 4/Root 1 0 R>>\nstartxref\n149\n%EOF";
+    output << "%PDF-1.0\n";
+    output << "1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj 2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj 3 0 obj<</Type/Page/MediaBox[0 0 3 3]>>endobj\n";
+    output << "xref0 4 0000000000 65535 f\n";
+    output << "0000000010 00000 n\n"; // Line Feed
+    output << "0000000053 00000 n\n"; 
+    output << "0000000102 00000 n\n";
+    output << "trailer<</Size 4/Root 1 0 R>>\n";
+    output << "startxref\n";
+    output << "149\n";
+    output << "%EOF";
     // /^/ above: is a minimal pdf-file
 
     //////
     // PRODUCE OUTPUT PDF END
     //////
+    std::cout << terminal_success << "created: " << pdfName << "!" << terminal_feedback << std::endl;
     return 0;
 }

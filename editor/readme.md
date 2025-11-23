@@ -1,0 +1,1 @@
+browser-based editor and pdf-renderer for now

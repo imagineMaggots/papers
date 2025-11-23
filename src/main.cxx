@@ -14,11 +14,12 @@
 #include <string>
 #include <regex>
 #include <fstream>
-#include <pdf.h>
-#include <pap.h>
+//#include <pdf.h>
+//#include <pap.h>
 
 // colors and indentation for terminal outputs
 #define terminal_error "\x1b[31m\t" // errors are red with an indentation
+#define terminal_error_ext "\x1b[35m\t" // magenta for: "it's not the compilers fault"
 #define terminal_feedback "\x1b[0m" // regular terminal outputs
 #define terminal_success "\x1b[32m" // awesome stuff that happened, benchmark passes or sumn
 
@@ -47,6 +48,9 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+    // getting the file name
+    std::string fileName = argv[1];
+    std::ifstream input(fileName);
     std::cout << "Processing document \"" << argv[1] << "\"" << std::endl;
     //////
     // FILE DETECTION END
@@ -60,6 +64,13 @@ int main(int argc, char* argv[])
      * - .pap Linting?
      * - DOM construction       
      */
+    std::string line;
+    if(!std::getline(input,line))
+    {
+        // .pap for paper
+        std::cerr << terminal_error << "Not a readable file.\n\tUsage: " << argv[0] << " <name_of_file>.pap" << terminal_error_ext <<"\n\t\t\t!!!with a valid paper!!!" << terminal_feedback << std::endl;
+        return -1;
+    }
 
     //////
     // PRODUCE OUTPUT PDF
@@ -72,12 +83,13 @@ int main(int argc, char* argv[])
      * - further
      */
 
+    
+    
+    
     // getting the file name right
-    std::string fileName = argv[1];
     fileName.erase(fileName.end()-4,fileName.end()); // gets rid of the last four characters of a string
     std::string fileExtension = ".pdf";
     std::string pdfName = fileName + fileExtension;
-    
     // instantiating an output
     std::ofstream output (pdfName);
     
@@ -98,6 +110,8 @@ int main(int argc, char* argv[])
     //////
     // PRODUCE OUTPUT PDF END
     //////
+
     std::cout << terminal_success << "created: " << pdfName << "!" << terminal_feedback << std::endl;
+    input.close();
     return 0;
 }

@@ -15,6 +15,7 @@
 #include <regex>
 #include <fstream>
 #include <pdf.h>
+#include <pap.h>
 
 // colors and indentation for terminal outputs
 #define terminal_error "\x1b[31m\t" // errors are red with an indentation

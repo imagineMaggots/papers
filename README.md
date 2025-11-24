@@ -1,14 +1,18 @@
 ## yes i know LaTeX exists // about this repository
-The intent of this program is to provide a very simplistic approach toward the creation of documents, especially scientific papers. 
-While technologies for this exact purpose exist (see: the LaTeX project), i want to (a) simplify the process and (b) use some modern technologies for some advanced features.
+The intent of this program is to provide a very simplistic approach toward the creation of documents, especially scientific papers (= i don't like word and compiling TeX annoys me). 
+While technologies for this exact purpose exist (see: afore mentioned LaTeX), i want to (a) simplify the process and (b) use some modern technologies for some advanced features.
 
-This project/repository should not be taken too seriously. It is mainly an attempt for me (hi, i'm hendrik) to work on something productive and get some coding experience (studying information technology does not teach you coding sadly. at least i know what a tree is now).
+This project/repository should not be taken too seriously. It is mainly an attempt for me (hi, i'm hendrik) to work on something productive and get some coding experience (studying information technology does not teach you coding sadly. at least i know what a tree is now and can even visualize one in my head! [it looks sad :c]).
+
+Also this is one of the first larger projects i am actually committing to. Mistakes will happen.
 
 ### simplifying the process of structured document creation
 #### Motivation
 Especially LaTeX has drifted away from simple document creation, as it allows for very advanced processing of documents, resulting from the benefits of TeX being a programming language accessible from the document itself. 
 This can have a lot of benefits, but usually one is bound to the structural requirements of an organization, such as an University or company. 
 So it'd be best (in my opinion) to seperate the concerns of "creating/writing a document" and "formatting the document" (as you'd naturally do in Microsoft Office Word or similar products).
+
+###### Note: Yes i am aware that this is the main discipline/focus of TeX as well. While i could simply implement a LaTeX markup, instead i want to use a minimalistic syntax from the start and avoid TeX as a barrier inbetween. This will likely result in way less features, but can hopefully be an alternative to TeX, which looks less like source code (which most people dislike looking at, for some reason).
 
 #### Approach and Layers
 As known from image-processing software (Adobe PhotoShop, Gimp, ...) a common method to manipulate a picture is by seperating it into different layers. 
@@ -24,11 +28,14 @@ Below this abstraction layer the user should be able to switch to a more advance
 #### Supported/Integrated structures in the document/program
 Some general structures i intend to support/use in documents would be:
 - tables
+- mathematical equation typesetting
 - references
 - plots (from csv or functions)
 - images
 - ...
 - lists (of chapters, images, plots, references)
+
+For more information see [docs](docs/paper-structure.md).
 
 ### adding modern, advanced features
 okay. using the terms "modern" and "advanced" is a bit of a reach.

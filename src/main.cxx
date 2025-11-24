@@ -56,6 +56,9 @@ int main(int argc, char* argv[])
     // FILE DETECTION END
     //////
 
+    //////
+    // DOM FROM PAP
+    //////
     /**
      * Larger To Do: Process the pap into dom
      * 
@@ -71,6 +74,11 @@ int main(int argc, char* argv[])
         std::cerr << terminal_error << "Not a readable file.\n\tUsage: " << argv[0] << " <name_of_file>.pap" << terminal_error_ext <<"\n\t\t\t!!!with a valid paper!!!" << terminal_feedback << std::endl;
         return -1;
     }
+
+    
+    //////
+    // DOM FROM PAP END
+    //////
 
     //////
     // PRODUCE OUTPUT PDF

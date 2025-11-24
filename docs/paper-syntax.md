@@ -10,8 +10,13 @@ As mentioned in the explanation of the [structure](paper-structure.md) and (or, 
 If you need access to the top-right corner specifically use:
 \#top-right ...
 ... can either be a text (which on overflow will find the next possible empty cell below, which it can write into).
-Starting a paragraph in the right third of the page should only produce text in this third. Unless specified !!! where to place next paragraph? needs more interpretation/thought !!!
+Starting a paragraph in the right third of the page should only produce text in this third (column). 
 
+Besides a division of the document into thirds horizontally (i.e. three columns) a lot of scientific publications print their works/papers in two columns.
+This feature will be added as well. It is implicitely usable by stating \#left instead of \#center-left.
+
+#### Connecting cells
+\#cell1+\#cell2 (?)
 
 ### Structural Images (across document)
 

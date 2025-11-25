@@ -47,7 +47,9 @@ enum interpretation {
     sub,// for later cell-manipulation
 };
 
+// commands indicating a position on a page, inside the document
 enum positionCommands {
+    // 3x3 split of page
     top,
     top_left,
     top_right,
@@ -57,6 +59,9 @@ enum positionCommands {
     bottom,
     bottom_left,
     bottom_right,
+    // two-column split; similar to TeX
+    left,
+    right,
 };
 
 // in-document sector. a part of a page of the document
@@ -80,10 +85,40 @@ class sector {
         switch (pos)
         {
             case top:
+                setPosition(page, 1, 1);
+                break;
+            case top_left:
                 setPosition(page, 0, 1);
                 break;
-            
+            case top_right:
+                setPosition(page, 2, 1);
+                break;
+            case center:
+                setPosition(page, 1, 1);
+                break;
+            case center_left:
+                setPosition(page, 0, 1);
+                break;
+            case center_right:
+                setPosition(page, 2, 1);
+                break;
+            case bottom:
+                setPosition(page, 1, 1);
+                break;
+            case bottom_left:
+                setPosition(page, 0, 1);
+                break;
+            case bottom_right:
+                setPosition(page, 2, 1);
+                break;
+            case left:
+                setPosition(page, 1, 0);
+                break;
+            case right:
+                setPosition(page, 1, 0);
+                break;
             default:
+                std::cerr << terminal_error << "\t\t\tmisplaced" << terminal_feedback << std::endl;
                 break;
         }
     }

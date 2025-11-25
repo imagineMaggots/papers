@@ -2,6 +2,10 @@
  * File parser for .pap-syntax evaluation.
  * 
  * For now: simple structural print to cmd.
+ * 
+ * left-over to do's
+ *  - clean up code
+ *  - make documentation more readable
  */
 #include <iostream>
 #include <fstream>
@@ -43,12 +47,58 @@ enum interpretation {
     sub,// for later cell-manipulation
 };
 
+enum positionCommands {
+    top,
+    top_left,
+    top_right,
+    center,
+    center_left,
+    center_right,
+    bottom,
+    bottom_left,
+    bottom_right,
+};
+
+// in-document sector. a part of a page of the document
+class sector {
+    public:
+        void setPosition(int page, int row, int column) 
+        {
+            this->position[0]=page;
+            this->position[1]=row;
+            this->position[2]=column;
+        };
+        // returns page number, row and column in page (following thirds in pages)
+        int* getPosition()
+        {
+            return this->position;
+        };
+    private:
+        int* position;// array for position. first array is for page number, second for x and last for y position.
+    sector(positionCommands pos, int page)
+    {
+        switch (pos)
+        {
+            case top:
+                setPosition(page, 0, 1);
+                break;
+            
+            default:
+                break;
+        }
+    }
+};
+
 int main(int argc, char** argv)
 {
     std::cout << "Hello from parser module" << std::endl;
     //globalSettings();// retrieves any global settings for the given document
 
     std::ifstream input("test.pap");
+
+    //////
+    // FETCHING COMMANDS
+    //////
 
     // single line evalutation for now. can be optimized using iterators
     int x = 0;
@@ -80,8 +130,24 @@ int main(int argc, char** argv)
             std::cout << terminal_success << "command found in line " << ++x << terminal_feedback << std::endl;
         };
     }
+    //////
+    // FETCHING COMMANDS END
+    //////
 
-    // next step: command validation
+    
+    //////
+    // SYNTAX VALIDATION
+    //////
+    for(std::string command : usedCommands)
+    {
+        if(command==)
+    }
+
+
+    //////
+    // SYNTAX VALIDATION END
+    //////
+
     // next step: determine what cell-positionings and contents were pre-defined (!)
     // - start with simple text positioning
 

@@ -175,7 +175,25 @@ int main(int argc, char** argv)
     //////
     for(std::string command : usedCommands)
     {
-        if(command==)
+        interpretation inter;
+        // make inter equal to the command interpretation in consideration with the document structure
+        switch (inter)
+        {
+        case global:
+            /* code */
+            break;
+        case local:
+            /* code */
+            break;
+        case single:
+            /* code */
+            break;
+        case cellular:
+            /* cide*/
+            break;
+        default:
+            break;
+        }
     }
 
 

@@ -1,1 +1,8 @@
 test
+#command
+
+word and a #command
+#command and a word
+one #command and another #command
+
+escaped \#hashtag

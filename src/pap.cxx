@@ -1,11 +1,14 @@
 /** 
  * Holds all paper objects (logically, not literally)
+ * 
+ * For construction of the document model.
  */
 #include <string>
 #include "pap.h"
 
 enum type {
     text,
+    math,
     image,
     plot,
     diagram,
@@ -72,14 +75,18 @@ class cell: public page
         {
             return this->position;
         }
+        // creation function for do-model
         void create(std::string input, enum type typesetAs)
         {
             switch (typesetAs)
             {
             case text:
+                
                 /* code */
                 break;
-            case text:
+            case math:
+                break;
+            case plot:
                 /* code */
                 break;
             
@@ -87,4 +94,9 @@ class cell: public page
                 break;
             }
         }
+    cell(std::string input, int position, enum type typset)
+    {
+        this->position=position;
+        create(input, typeset);
+    };
 };
